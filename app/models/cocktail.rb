@@ -6,7 +6,7 @@ class Cocktail < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def average_rating
-    return 'Be the first reviewer!' if reviews.empty?
+    return 0 if reviews.empty?
 
     sum = 0.0
     reviews.each do |review|

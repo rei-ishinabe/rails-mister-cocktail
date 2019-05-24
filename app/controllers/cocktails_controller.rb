@@ -2,7 +2,7 @@ class CocktailsController < ApplicationController
   before_action :set_cocktail, only: [:show]
 
   def index
-    @cocktails = Cocktail.all
+    @cocktails = Cocktail.all.sort_by { |cocktail| -cocktail.average_rating }
   end
 
   def show
