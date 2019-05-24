@@ -2,7 +2,6 @@
   <div class="container">
     <h1>Cocktails around the world</h1>
     <p>Full recipe guide to enjoy cocktails more!</p>
-<!--     <a class="btn btn-primary" href="#">Apply now</a> -->
 </div>
 </div>
 <div class="container">
@@ -21,8 +20,8 @@
       <% end %>
     <% end %>
   </div>
-  <%= link_to new_cocktail_path do %>
-    <i class="fas fa-plus"></i> Add a new cocktail
+  <%= link_to new_cocktail_path, class:'btn btn-secondary mt-3' do %>
+    <i class="fas fa-cocktail"></i> Add a new cocktail
   <% end %>
 </div>
 
