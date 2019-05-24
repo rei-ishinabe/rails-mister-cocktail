@@ -1,4 +1,4 @@
-<div class="banner" >
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('john-fornander-729631-unsplash.jpg')" >
   <div class="container">
     <h1>Cocktails around the world</h1>
     <p>Full recipe guide to enjoy cocktails more!</p>
@@ -9,7 +9,13 @@
   <div class="cards">
     <% @cocktails.each do |cocktail| %>
       <%= link_to cocktail_path(cocktail) do %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <% if cocktail.photo.file.nil? %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3),
+           rgba(0,0,0,0.3)), url('https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg')">
+        <% else %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3),
+           rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo, crop: :fill %>')">
+        <% end %>
         <%= cocktail.name %>
         </div>
       <% end %>
@@ -19,3 +25,4 @@
     <i class="fas fa-plus"></i> Add a new cocktail
   <% end %>
 </div>
+

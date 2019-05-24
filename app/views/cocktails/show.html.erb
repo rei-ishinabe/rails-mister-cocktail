@@ -4,6 +4,9 @@
   </div>
 </div>
 <div class="container">
+  <% unless @cocktail.photo.file.nil? %>
+    <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+  <% end %>
   <% @cocktail.doses.each do |dose| %>
     <p>
       <%= "#{dose.ingredient.name.capitalize} - #{dose.amount}, #{dose.description}" %>
