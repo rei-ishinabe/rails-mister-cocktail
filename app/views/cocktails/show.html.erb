@@ -18,33 +18,39 @@
   </div>
 </div>
 <div class="container">
-  <h2 class="mt-3">Ingredients</h2>
-  <% @cocktail.doses.each do |dose| %>
-    <p>
-      <%= "#{dose.ingredient.name.capitalize} - #{dose.amount}, #{dose.description}" %>
-      <%= link_to dose_path(dose), method:'delete' do %>
-        <i class="far fa-trash-alt"></i>
-      <% end %>
-    </p>
-  <% end %>
-  <div>
-    <%= link_to new_cocktail_dose_path(@cocktail), class:'btn btn-outline-secondary btn-sm' do %>
-    <i class="fas fa-tint"></i> Add an ingredient
-    <% end %>
-
-  </div>
-  <h2 class="mt-3">Reviews</h2>
-  <div class="mt-3">
-    <% @cocktail.reviews.each do |review| %>
-      <p><%= review.comment %>
-        <% review.rating.times do %>
-          <i class="fas fa-cocktail"></i>
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <h2 class="mt-3">Ingredients</h2>
+        <% @cocktail.doses.each do |dose| %>
+          <p>
+            <%= "#{dose.ingredient.name.capitalize} - #{dose.amount}, #{dose.description}" %>
+            <%= link_to dose_path(dose), method:'delete' do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          </p>
         <% end %>
-      </%></p>
-    <% end %>
-    <%= link_to new_cocktail_review_path(@cocktail), class:'btn btn-outline-secondary btn-sm' do %>
-      <i class="fas fa-pen-fancy"></i> Add a review
-    <% end %>
+        <div>
+          <%= link_to new_cocktail_dose_path(@cocktail), class:'btn btn-outline-secondary btn-sm' do %>
+          <i class="fas fa-tint"></i> Add an ingredient
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <h2 class="mt-3">Reviews</h2>
+        <div class="mt-3">
+          <% @cocktail.reviews.each do |review| %>
+          <p><%= review.comment %>
+          <% review.rating.times do %>
+            <i class="fas fa-cocktail"></i>
+           <% end %>
+        </%></p>
+      <% end %>
+      <%= link_to new_cocktail_review_path(@cocktail), class:'btn btn-outline-secondary btn-sm' do %>
+        <i class="fas fa-pen-fancy"></i> Add a review
+      <% end %>
+      </div>
+    </div>
     <%= link_to cocktails_path, class:'ml-3' do %>
       Back
     <% end %>
